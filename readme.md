@@ -3,7 +3,7 @@
 A live, community-driven AI prompt library with a cyberpunk terminal aesthetic.
 When anyone adds a prompt, it appears for every visitor **instantly** — powered by Firebase Firestore realtime sync.
 
-> **Inspired by:** [anku0669.github.io](https://anku0669.github.io/) (hacker terminal vibe) + [unjail.ai](https://www.unjail.ai/) (card grid layout)
+> **Inspired by:** [anku0669.github.io](https://anku0669.github.io/) (hacker terminal vibe) 
 
 ---
 
