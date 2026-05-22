@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="PromptForge — A live, community-driven library of high-leverage AI prompts. Drop one in, it goes live for everyone, instantly." />
+<title>PromptForge — The live prompt library.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%A1%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+
+<!-- ===================== GLOBAL NAV ===================== -->
+<nav class="global-nav">
+  <div class="global-nav-inner">
+    <a href="#" class="nav-logo" aria-label="PromptForge home">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+      PromptForge
+    </a>
+    <ul class="nav-links" role="menubar">
+      <li><a href="#library">Library</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#community">Community</a></li>
+    </ul>
+    <div class="nav-utility">
+      <a href="#library" class="nav-icon" aria-label="Search">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </a>
+      <span class="nav-status" id="status-pill">
+        <span class="status-dot" id="status-dot"></span>
+        <span id="status-text">Connecting</span>
+      </span>
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== HERO TILE (light) ===================== -->
+<section class="tile tile-light tile-hero" id="top">
+  <div class="tile-stack">
+    <h1 class="hero-display">The live<br/>prompt library.</h1>
+    <p class="hero-lead">Built by everyone. For everyone. Drop a prompt and it goes live, instantly.</p>
+    <div class="cta-row">
+      <button class="btn-primary" id="heroAddBtn">Add a prompt</button>
+      <a href="#library" class="btn-secondary-pill">Browse the library&nbsp;<span aria-hidden="true">›</span></a>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="render-card">
+        <div class="render-card-head">
+          <span class="render-chip">Coding</span>
+          <span class="render-meta">2 min ago</span>
+        </div>
+        <h3 class="render-title">Ultimate Code Reviewer</h3>
+        <p class="render-body">You are a senior staff engineer doing a rigorous code review. Review the code I paste using this protocol: correctness, security, performance, readability…</p>
+        <div class="render-foot">
+          <span class="render-author">by forge_team</span>
+          <span class="render-link">Copy ›</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DARK FEATURE TILE ===================== -->
+<section class="tile tile-dark">
+  <div class="tile-stack">
+    <h2 class="display-lg">Forge. Deploy. Sync.</h2>
+    <p class="lead lead-on-dark">Every prompt added by anyone, anywhere — visible to every visitor the moment it lands. Powered by realtime sync.</p>
+    <div class="cta-row">
+      <button class="btn-primary" id="darkAddBtn">Add a prompt</button>
+      <a href="#how" class="btn-secondary-pill on-dark">Learn more&nbsp;<span aria-hidden="true">›</span></a>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="render-row">
+        <div class="render-card render-card-sm">
+          <span class="render-chip">Writing</span>
+          <h4 class="render-title-sm">Viral Twitter Thread</h4>
+          <p class="render-body-sm">You are a top-1% ghostwriter…</p>
+        </div>
+        <div class="render-card render-card-sm">
+          <span class="render-chip">Research</span>
+          <h4 class="render-title-sm">First Principles</h4>
+          <p class="render-body-sm">Act as a first-principles reasoner…</p>
+        </div>
+        <div class="render-card render-card-sm">
+          <span class="render-chip">Creative</span>
+          <h4 class="render-title-sm">Cinematic Image</h4>
+          <p class="render-body-sm">Generate a cinematic prompt for…</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== STATS TILE (parchment) ===================== -->
+<section class="tile tile-parchment tile-stats">
+  <div class="tile-stack stats-stack">
+    <h2 class="display-md">A living arsenal.</h2>
+    <p class="lead">Numbers update in real time as the community contributes.</p>
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="stat-num" id="stat-total">0</div>
+        <div class="stat-label">Total prompts</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="stat-categories">0</div>
+        <div class="stat-label">Categories</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="stat-today">0</div>
+        <div class="stat-label">Added today</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">Live</div>
+        <div class="stat-label">Realtime sync</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LIBRARY TILE (light) ===================== -->
+<section class="tile tile-light tile-library" id="library">
+  <div class="tile-stack library-stack">
+    <header class="library-head">
+      <h2 class="display-lg">The library.</h2>
+      <p class="lead">Filter by category. Search by intent. Copy with one tap.</p>
+    </header>
+
+    <div class="library-controls">
+      <div class="search-wrap">
+        <svg class="search-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="searchInput" class="search-input" type="text" placeholder="Search prompts, tags, authors" />
+      </div>
+      <button class="btn-primary btn-sm" id="addBtn">Add a prompt</button>
+    </div>
+
+    <div class="filter-row" id="categoryChips" role="tablist"></div>
+
+    <div class="card-grid" id="grid"></div>
+
+    <div class="empty-state" id="emptyState" hidden>
+      <div class="empty-title">No prompts match this filter.</div>
+      <p class="empty-sub">Be the first to add one in this category.</p>
+      <button class="btn-secondary-pill" id="emptyAddBtn">Add a prompt</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== HOW IT WORKS (dark) ===================== -->
+<section class="tile tile-dark tile-how" id="how">
+  <div class="tile-stack">
+    <h2 class="display-lg">How it works.</h2>
+    <p class="lead lead-on-dark">Four steps. No accounts. No friction.</p>
+    <div class="how-grid">
+      <article class="how-card">
+        <div class="how-num">01</div>
+        <h3 class="how-title">Browse</h3>
+        <p class="how-body">Every prompt is visible the moment it's added. There's no review queue — the community curates by what gets copied.</p>
+      </article>
+      <article class="how-card">
+        <div class="how-num">02</div>
+        <h3 class="how-title">Forge</h3>
+        <p class="how-body">Drop a title, category, tags, and the prompt body. It deploys to the live vault in a single tap.</p>
+      </article>
+      <article class="how-card">
+        <div class="how-num">03</div>
+        <h3 class="how-title">Sync</h3>
+        <p class="how-body">Every visitor sees your prompt instantly via Firestore's realtime channel. No refresh, no delay.</p>
+      </article>
+      <article class="how-card">
+        <div class="how-num">04</div>
+        <h3 class="how-title">Deploy</h3>
+        <p class="how-body">Copy, paste into ChatGPT, Claude, Gemini, or your tool of choice. Sharpen, iterate, share back.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABOUT TILE (parchment) ===================== -->
+<section class="tile tile-parchment tile-about" id="about">
+  <div class="tile-stack about-stack">
+    <h2 class="display-lg">Built for<br/>operators.</h2>
+    <p class="lead about-lead">
+      PromptForge is an open, community-driven prompt library. No paywalls.
+      No gatekeepers. The best prompts win by being copied — and the rest fade quietly.
+    </p>
+    <div class="cta-row">
+      <button class="btn-primary" id="aboutAddBtn">Contribute a prompt</button>
+      <a href="#library" class="btn-secondary-pill">Explore the library&nbsp;<span aria-hidden="true">›</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer" id="community">
+  <div class="footer-inner">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4 class="footer-h">PromptForge</h4>
+        <ul>
+          <li><a href="#library">Library</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-h">Categories</h4>
+        <ul>
+          <li><a href="#library">Coding</a></li>
+          <li><a href="#library">Writing</a></li>
+          <li><a href="#library">Marketing</a></li>
+          <li><a href="#library">Research</a></li>
+          <li><a href="#library">Creative</a></li>
+          <li><a href="#library">Education</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-h">Tools</h4>
+        <ul>
+          <li><a href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a></li>
+          <li><a href="https://claude.ai" target="_blank" rel="noopener">Claude</a></li>
+          <li><a href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-h">Status</h4>
+        <ul>
+          <li><a href="#">Realtime: <span id="footer-status">Live</span></a></li>
+          <li><a href="#">Build: v2.0</a></li>
+          <li><a href="#">Uptime: <span id="uptime">--:--:--</span></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-legal">
+      <span>Copyright © 2026 PromptForge. All rights reserved.</span>
+      <span class="legal-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#community">Community</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== ADD PROMPT MODAL ===================== -->
+<div class="modal-backdrop" id="modal" hidden>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M6 18 18 6"/></svg>
+    </button>
+    <div class="modal-head">
+      <h3 id="modalTitle" class="modal-title">Add a prompt.</h3>
+      <p class="modal-sub">It goes live for every visitor the moment you submit.</p>
+    </div>
+
+    <form id="promptForm" class="modal-form" novalidate>
+      <label class="field">
+        <span class="field-label">Title</span>
+        <input name="title" type="text" maxlength="120" placeholder="e.g. Ultimate Code Reviewer" required />
+      </label>
+
+      <div class="field-row">
+        <label class="field">
+          <span class="field-label">Category</span>
+          <select name="category" required>
+            <option value="">Choose a category</option>
+            <option>Coding</option>
+            <option>Writing</option>
+            <option>Marketing</option>
+            <option>Productivity</option>
+            <option>Research</option>
+            <option>Roleplay</option>
+            <option>Design</option>
+            <option>Education</option>
+            <option>Business</option>
+            <option>Creative</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label class="field">
+          <span class="field-label">Author</span>
+          <input name="author" type="text" maxlength="40" placeholder="Optional · anon" />
+        </label>
+      </div>
+
+      <label class="field">
+        <span class="field-label">Tags <span class="field-hint">comma separated</span></span>
+        <input name="tags" type="text" maxlength="120" placeholder="claude, gpt, code-review, debug" />
+      </label>
+
+      <label class="field">
+        <span class="field-label">Prompt body</span>
+        <textarea name="body" rows="8" maxlength="6000" placeholder="Drop your prompt here…" required></textarea>
+      </label>
+
+      <div class="modal-actions">
+        <button type="button" class="btn-secondary-pill" id="cancelBtn">Cancel</button>
+        <button type="submit" class="btn-primary" id="submitBtn">Publish</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ===================== VIEW PROMPT MODAL ===================== -->
+<div class="modal-backdrop" id="viewModal" hidden>
+  <div class="modal-card view-card" role="dialog" aria-modal="true">
+    <button class="modal-close" id="viewClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M6 18 18 6"/></svg>
+    </button>
+    <div class="view-head">
+      <div class="view-meta">
+        <span class="cat-chip" id="viewCat">Category</span>
+        <span class="view-author" id="viewAuthor">by anon</span>
+      </div>
+      <h3 class="view-title" id="viewTitle">Title</h3>
+      <div class="view-tags" id="viewTags"></div>
+    </div>
+    <div class="view-body-wrap">
+      <pre id="viewBody"></pre>
+      <button class="btn-primary btn-sm view-copy" id="viewCopy">Copy</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== TOAST ===================== -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- Firebase SDK (compat) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
